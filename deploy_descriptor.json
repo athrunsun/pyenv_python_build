@@ -1,0 +1,23 @@
+{
+    "package": {
+        "name": "python",
+        "repo": "pyenv_python_build",
+        "subject": "athrunsun",
+        "desc": "Pyenv static builds",
+        "website_url": "https://github.com/athrunsun/pyenv_python_build",
+        "issue_tracker_url": "https://github.com/athrunsun/pyenv_python_build/issues",
+        "vcs_url": "https://github.com/athrunsun/pyenv_python_build.git"
+    },
+
+    "version": {
+        "name": "stable",
+        "gpgSign": false
+    },
+
+    "files":
+        [
+        {"includePattern": "dist/(.*\\.gz)", "uploadPattern": "$2"}
+        ],
+    
+    "publish": true
+}
