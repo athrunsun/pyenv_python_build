@@ -1,5 +1,5 @@
 language: generic
-env: MY_BEDROOM=$HOME/bedroom SCRIPT_HOME=$MY_BEDROOM/script PYENV_HOME=$HOME/.pyenv PYENV_VERSIONS=$PYENV_HOME/versions PYTHON_2_VERSION=2.7.13 PYTHON_3_VERSION=3.6.1 BINTRAY_USER_NAME=athrunsun
+env: MY_BEDROOM=$HOME/bedroom SCRIPT_HOME=$MY_BEDROOM/script PYENV_HOME=$HOME/.pyenv PYENV_VERSIONS=$PYENV_HOME/versions PYTHON_2_VERSION=2.7.13 PYTHON_3_VERSION=3.6.1 BINTRAY_USER_NAME=athrunsun OS_NAME=osx
 branches:
   only:
   - master
@@ -7,11 +7,14 @@ matrix:
   include:
   - os: osx
     osx_image: xcode6.4
+  - os: osx
+    osx_image: xcode7.3
+  - os: osx
+    osx_image: xcode8.1
 install:
 - mkdir $MY_BEDROOM
 - ". $TRAVIS_BUILD_DIR/clone.sh"
 - rm -rf $HOME/.pyenv
 script:
-- ". determine_os_name.sh"
 - ". install_python.sh"
 - ". upload_to_bintray.sh"
