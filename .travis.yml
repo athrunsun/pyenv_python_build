@@ -1,5 +1,5 @@
 language: generic
-env: MY_BEDROOM=$HOME/bedroom SCRIPT_HOME=$MY_BEDROOM/script PYENV_HOME=$HOME/.pyenv PYENV_VERSIONS=$PYENV_HOME/versions CI_HOME=$TRAVIS_BUILD_DIR
+env: MY_BEDROOM=$HOME/bedroom SCRIPT_HOME=$MY_BEDROOM/script PYENV_HOME=$HOME/.pyenv PYENV_VERSIONS=$PYENV_HOME/versions PYTHON_2_VERSION=2.7.13 PYTHON_3_VERSION=3.6.1 BINTRAY_USER_NAME=athrunsun
 branches:
   only:
   - master
@@ -7,17 +7,11 @@ matrix:
   include:
   - os: osx
     osx_image: xcode6.4
-  - os: linux
 install:
 - mkdir $MY_BEDROOM
-- ". $CI_HOME/clone.sh"
+- ". $TRAVIS_BUILD_DIR/clone.sh"
 - rm -rf $HOME/.pyenv
 script:
 - ". determine_os_name.sh"
-- ". script.sh"
-deploy:
-  provider: bintray
-  file: deploy_descriptor.json
-  user: athrunsun
-  on: master
-  key: "CQd3/I+Ms97wdznL9ZLu0OZY3kBfDp2hYvTD6rlqTqs3ZKnfbcHE823gUyL1EcGJWhgbvW8OEAW9pnIT9zesvGM+kMLK2nyYiyR7brkGlClLs7J5lnomQM1060sbdXIN6m252rWONQlO3yzdeui8mQmU3dAEMoxk0Ta6ekwGsRB5Q6Oi86ruRm0MuYTQv6NKZoX39wsmD6D5zOviGLFh1urnl8wYjiYNSl1Xoq7RCHOaEzxGRYXoEKbgfGcgMD51ZxgRVGCYGFesyH2/lqI7MNmUCgj2slorZQ0ARHIW8XxjAG2WtQJZzQ23TX9XN0gK6a39OqrporaEOYxUSAD1Llw01FMgASaxVD4fC9yuuCJPcnxPqRcDy++B4bw/wn3Cq4z6JL6J8lw+q+U/47ufUlxczi0uuPvqqCDoXL/R6wxBt1VlL9YUrYG4YYwmnDEpLNQwhn1t8B4M8wia30dY8qV+lRIXckbTd2bGkhr+P7uTSC+5bePyJjC+cAa4HafQoGGEF5tFfw22+1I+5GEMavcsSVKT/YUvB5L3OCoXD8voVb+RMGmE8SurAbHGEJhUMS8SHbLN/0ljfEfosnBr0HUoHlyxvvo4ynapc3SkIbJ48vdhw9b17UJv30C/0zQLYPMcvIp81qH6tFr/MpGVhK6+ntOgVh4CAw6Yq1+FI1A="
+- ". install_python.sh"
+- ". upload_to_bintray.sh"
