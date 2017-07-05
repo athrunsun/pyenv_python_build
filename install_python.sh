@@ -9,6 +9,10 @@ echo "Configure environment variables..."
 . $HOME/bedroom/script/osx/util/env_vars.sh
 . $APP_SCRIPT_ROOT/dotfiles/home/.profile
 
+echo "Determine MacOS version..."
+. $SCRIPT_UTIL_ROOT/determine_system_version.sh
+echo "MacOS version: $SYSTEM_VERSION"
+
 echo "Install pyenv dependencies..."
 . $SCRIPT_UTIL_ROOT/install_pyenv_dependencies.sh
 
@@ -17,7 +21,7 @@ echo "Install pyenv..."
 
 if ! [ -z ${PYTHON_2_VERSION+x} ]; then
     . $SCRIPT_UTIL_SHARE/pyenv_install_python.sh $PYTHON_2_VERSION true false
-    PYTHON_2_TARBALL_SAVE_NAME=pyenv_python_${OS_NAME}_${PYTHON_2_VERSION}.tar.gz
+    export PYTHON_2_TARBALL_SAVE_NAME=pyenv_python_${PYTHON_2_VERSION}_${OS_NAME}_${SYSTEM_VERSION}.tar.gz
 
     echo "Compressing python2 folder to '$PYTHON_2_TARBALL_SAVE_NAME'..."
     tar -czf $PYTHON_2_TARBALL_SAVE_NAME --directory=$PYENV_VERSIONS/$PYTHON_2_VERSION .
@@ -30,7 +34,7 @@ fi
 
 if ! [ -z ${PYTHON_3_VERSION+x} ]; then
     . $SCRIPT_UTIL_SHARE/pyenv_install_python.sh $PYTHON_3_VERSION true false
-    PYTHON_3_TARBALL_SAVE_NAME=pyenv_python_${OS_NAME}_${PYTHON_3_VERSION}.tar.gz
+    PYTHON_3_TARBALL_SAVE_NAME=pyenv_python_${PYTHON_3_VERSION}_${OS_NAME}_${SYSTEM_VERSION}.tar.gz
 
     echo "Compressing python3 folder to '$PYTHON_3_TARBALL_SAVE_NAME'..."
     tar -czf $PYTHON_3_TARBALL_SAVE_NAME --directory=$PYENV_VERSIONS/$PYTHON_3_VERSION .
