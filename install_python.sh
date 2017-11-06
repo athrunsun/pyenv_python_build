@@ -6,7 +6,7 @@ PYTHON_TARBALL_DIR=$TRAVIS_BUILD_DIR/dist
 mkdir -p $PYTHON_TARBALL_DIR
 
 echo "Configure environment variables..."
-. $HOME/bedroom/script/osx/util/env_vars.sh
+. $HOME/bedroom/kb/script/osx/util/env_vars.sh
 . $APP_SCRIPT_ROOT/dotfiles/home/.profile
 
 echo "Determine MacOS version..."

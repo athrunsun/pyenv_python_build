@@ -1,5 +1,16 @@
 language: generic
-env: MY_BEDROOM=$HOME/bedroom SCRIPT_HOME=$MY_BEDROOM/script PYENV_HOME=$HOME/.pyenv PYENV_VERSIONS=$PYENV_HOME/versions PYTHON_3_VERSION=3.6.3 PYTHON_2_VERSION=2.7.14 BINTRAY_USER_NAME=athrunsun OS_NAME=osx
+env:
+  global:
+    - MY_BEDROOM=$HOME/bedroom
+    - SCRIPT_HOME=$MY_BEDROOM/kb
+    - PYENV_HOME=$HOME/.pyenv
+    - PYENV_VERSIONS=$PYENV_HOME/versions
+    - PYTHON_3_VERSION=3.6.3
+    - PYTHON_2_VERSION=2.7.14
+    - BINTRAY_USERNAME=athrunsun
+    - BIT_USERNAME=okampfer
+    - SCRIPT_REPO=kb
+    - OS_NAME=osx
 branches:
   only:
   - master
